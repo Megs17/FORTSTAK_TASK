@@ -8,5 +8,13 @@ kubectl create secret docker-registry ecr-secret \
 kubectl patch serviceaccount default \
   -p '{"imagePullSecrets": [{"name": "ecr-secret"}]}'
 
+kubectl create namespace argocd
+
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl patch svc argocd-server -n argocd \
+  -p '{"spec": {"type": "NodePort"}}'
+
+
 master 3.94.86.101
 woker-node-0 18.207.217.175
