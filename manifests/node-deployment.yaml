@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: megs17/todo-node:latest
+        image: 257034520231.dkr.ecr.us-east-1.amazonaws.com/todo-list-nodejs:f6c11a1aba5469e8b4bf641682475d5115654317
         ports:
         - containerPort: 4000
         env:
