@@ -4,6 +4,9 @@ ami = data.aws_ami.ubuntu.id
 
 instance_type = "t2.medium"
 
+
+iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
+
 key_name = aws_key_pair.key_pair.key_name
 
 subnet_id = aws_subnet.public_zone1.id
@@ -40,6 +43,8 @@ resource "aws_instance""worker_nodes" {
 count = var.worker_nodes_count
 
 ami = data.aws_ami.ubuntu.id
+
+iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
 
 instance_type = "t2.small"
 
