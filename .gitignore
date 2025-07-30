@@ -3,12 +3,12 @@ Todo-List-nodejs/node_modules/
 Todo-List-nodejs/.env
 
 # Terraform files
-infra_terraform_code/.terraform/
-infra_terraform_code/*.tfstate
-infra_terraform_code/*.tfstate.backup
-infra_terraform_code/.terraform.lock.hcl
-infra_terraform_code/*.pem
-infra_terraform_code/terraform.tfvars
+infra_terraform_ansible_code/.terraform/
+infra_terraform_ansible_code/*.tfstate
+infra_terraform_ansible_code/*.tfstate.backup
+infra_terraform_ansible_code/.terraform.lock.hcl
+infra_terraform_ansible_code/*.pem
+infra_terraform_ansible_code/terraform.tfvars
 
 # Global Terraform ignores
 .terraform/
