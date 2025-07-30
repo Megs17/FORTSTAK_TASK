@@ -1,0 +1,4 @@
+kubectl taint nodes ip-10-0-89-88 node-role.kubernetes.io/control-plane:NoSchedule-
+
+master 3.94.86.101
+woker-node-0 18.207.217.175

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-app
+        image: megs17/todo-node:latest
+        ports:
+        - containerPort: 4000
+        env:
+        - name: mongoDbUrl
+          value: mongodb://mongo-0.mongo:27017/todolistDb
