@@ -1,4 +1,4 @@
-# Todo List Application
+# FORTSTAK_TASK
 
 ## Overview
 This project is a web-based Todo List application that allows users to create, manage, and delete tasks through a user-friendly interface. The application is built with Node.js, Express.js, EJS, CSS, JavaScript, MongoDB, and Mongoose, and uses Nodemon for development. It is containerized using Docker, provisioned with Terraform, configured with Ansible, and deployed on Kubernetes with Argo CD for continuous deployment. The infrastructure is hosted on AWS, with a MongoDB instance running in the Kubernetes cluster. Docker Compose is provided for local development, and a GitHub Actions workflow automates building and pushing the Docker image to AWS ECR.
