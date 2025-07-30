@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: 257034520231.dkr.ecr.us-east-1.amazonaws.com/todo-list-nodejs:8c2b7260b6f7f6f99e763fbdcbc296e1577164e1
+        image: 257034520231.dkr.ecr.us-east-1.amazonaws.com/todo-list-nodejs:6dd14807e3c366bfac1730401f32ca7ab046bade
         ports:
         - containerPort: 4000
         env:
