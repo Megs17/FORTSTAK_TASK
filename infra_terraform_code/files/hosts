@@ -1,20 +1,2 @@
-setup aws cli
-kubectl create secret docker-registry ecr-secret \
-  --docker-server=257034520231.dkr.ecr.us-east-1.amazonaws.com \
-  --docker-username=AWS \
-  --docker-password=$(aws ecr get-login-password --region us-east-1) \
-  --docker-email=example@example.com
-
-kubectl patch serviceaccount default \
-  -p '{"imagePullSecrets": [{"name": "ecr-secret"}]}'
-
-kubectl create namespace argocd
-
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-kubectl patch svc argocd-server -n argocd \
-  -p '{"spec": {"type": "NodePort"}}'
-
-
-master 3.94.86.101
-woker-node-0 18.207.217.175
+master 54.209.56.38
+woker-node-0 44.202.146.131

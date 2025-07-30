@@ -1,4 +1,3 @@
-# .github/workflows/docker-ecr.yml
 name: Build and Push Todo-List-nodejs to ECR
 
 on:
