@@ -218,12 +218,6 @@
   hosts: master
   become: true
   remote_user: ubuntu
-
-  vars:
-        aws_region: us-east-1
-        docker_server: 257034520231.dkr.ecr.us-east-1.amazonaws.com
-        docker_email: example@example.com
-
   tasks:
     - name: Initialize Kubeadm Master
       command: >
@@ -247,10 +241,35 @@
       command: kubeadm token create --print-join-command
       register: join_command_output
 
-    - name: Show kubeadm join command
-      debug:
-        msg: "{{ join_command_output.stdout }}"
+    - name: Set join command fact
+      set_fact:
+        kube_join_cmd: "{{ join_command_output.stdout }}"
+     
+
+
+- name: Join Worker Nodes to Cluster
+  hosts: workers
+  become: true
+  remote_user: ubuntu
+
+  tasks:
+    - name: Run kubeadm join command
+      command: "{{ hostvars['control_plane']['kube_join_cmd'] }}"
+
     
+
+
+- name: Setup ECR and Argo CD
+  hosts: master
+  become: true
+  remote_user: ubuntu
+
+  vars:
+        aws_region: us-east-1
+        docker_server: 257034520231.dkr.ecr.us-east-1.amazonaws.com
+        docker_email: example@example.com
+
+  tasks:    
     - name: Get AWS ECR login password
       command: aws ecr get-login-password --region {{ aws_region }}
       register: ecr_password

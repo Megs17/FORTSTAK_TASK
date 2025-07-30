@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  node-app:
+    image: megs17/todo-node:latest
+    ports:
+      - "4000:4000"
+    environment:
+      - mongoDbUrl=mongodb://mongo:27017/todolistDb
+    depends_on:
+      - mongo
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+  mongo:
+    image: mongo
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "bash", "-c", "</dev/tcp/localhost/27017"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=60
+    restart: always
+
+volumes:
+  mongo-data:
